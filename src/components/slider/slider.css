@@ -97,10 +97,10 @@ input[type='radio']:checked + label{
     background-color: rgba(255, 255, 255, 0.9);
 }
 .next{ 
-    right: 30%;
+    right: 31%;
 }
 .previous{ 
-    left:30% ;
+    left:31% ;
 }
 .arrow{ 
     width: 10px;
