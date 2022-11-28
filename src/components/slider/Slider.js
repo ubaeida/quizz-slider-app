@@ -16,16 +16,13 @@ const Slider = () => {
     const [questionsNumberList, setQuestionsNumberList] = useState([])
     const [slides, setSlides] = useState([])
     const [showNavigation, setShowNavigation] = useState(false)
-    const [showQuiz, setShowQuiz] = useState(false)
     const showSlider = () => {
         show.current.style.display = 'block'
         show.current.style.opacity = 1
         checkBox.current.style.display = 'none'
         startBtn.current.style.opacity = 0
         startBtn.current.style.display = 'none'
-        setShowQuiz(true)
     }
-
     const goNextSlide = () => {
         if (activeSlide < (slides.length - 1)) setActiveSlide(activeSlide + 1)
         else setActiveSlide(0)
@@ -70,13 +67,13 @@ const Slider = () => {
         })
         alert(Math.round(score))
     }
-    
+
     const goToSlide = (slidNo) => {
         if (showNavigation == true) setActiveSlide(slidNo)
         else return
     }
     const handleNavigateStatues = () => {
-        if (showNavigation == false)  setShowNavigation(true)
+        if (showNavigation == false) setShowNavigation(true)
         navigation_box.current.style.display = 'block'
     }
 
@@ -86,13 +83,14 @@ const Slider = () => {
                 <h1>Welcome to our Quizz</h1>
                 <div className='checkbox' ref={checkBox}>
                     <input type='checkbox' id='checkbox' onClick={handleNavigateStatues} />
-                    <label htmlFor='checkbox'>Do you want to have the option to navigate between questions ? </label>
+                    <label htmlFor='checkbox'>
+                        Do you want to have the option to navigate between questions ? 
+                        </label>
                 </div>
                 <button className='btn' ref={startBtn} onClick={showSlider}>Start</button>
                 <div className="out-slider" ref={show}>
                     <div className='slider' ref={slider}>
                         {
-                            (showQuiz ==true &&
                             questions.map((question, questionIndex) => {
                                 return (
                                     <Quizz
@@ -101,7 +99,7 @@ const Slider = () => {
                                         question={question}
                                         questionIndex={questionIndex} />
                                 )
-                            }))
+                            })
                         }
                         <div className='navigation-box' ref={navigation_box}>
                             {
